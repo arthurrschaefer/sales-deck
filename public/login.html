@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Sales Tracker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <style>
+        body { display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .login-card { width: 100%; max-width: 400px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: #fff; }
+        .error { color: #d9534f; font-size: 0.9rem; margin-top: 10px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>Admin Access</h2>
+        <p>Please enter the management password.</p>
+        
+        <form id="loginForm">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" style="width: 100%;">Login</button>
+            <p id="errorMessage" class="error">Invalid password. Please try again.</p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const errorElement = document.getElementById('errorMessage');
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Redirect to the dashboard upon successful login
+                    window.location.href = '/dashboard.html';
+                } else {
+                    errorElement.style.display = 'block';
+                }
+            } catch (err) {
+                console.error('Login error:', err);
+                alert('An error occurred. Is the server running?');
+            }
+        });
+    </script>
+</body>
+</html>

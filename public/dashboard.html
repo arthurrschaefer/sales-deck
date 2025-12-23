@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Admin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+</head>
+<body>
+    <h1>Sales Resource Tracker</h1>
+    
+    <section>
+        <h3>Add New Resource</h3>
+        <input id="title" placeholder="Title (e.g. Q3 Pitch Deck)">
+        <input id="url" placeholder="Destination URL">
+        <input id="slug" placeholder="Short-code (e.g. pitch-q3)">
+        <button onclick="addLink()">Save Link</button>
+    </section>
+
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Clicks</th>
+                <th>Feedback Count</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody id="stat-table"></tbody>
+    </table>
+
+    <script>
+        async function loadStats() {
+            const res = await fetch('/api/admin/stats');
+            const data = await res.json();
+            const table = document.getElementById('stat-table');
+            table.innerHTML = data.map(r => `
+                <tr>
+                    <td><b>${r.title}</b></td>
+                    <td>${r.clicks}</td>
+                    <td>${r.feedback_count}</td>
+                    <td><code>/go/${r.slug}</code></td>
+                </tr>
+            `).join('');
+        }
+
+        async function addLink() {
+            const body = {
+                title: document.getElementById('title').value,
+                url: document.getElementById('url').value,
+                slug: document.getElementById('slug').value
+            };
+            await fetch('/api/admin/resources', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(body)
+            });
+            loadStats();
+        }
+
+        loadStats();
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS resources (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    url TEXT NOT NULL,
+    slug TEXT UNIQUE NOT NULL,
+    clicks INTEGER DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS feedback (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    resource_id INTEGER,
+    status TEXT,
+    comment TEXT,
+    user_identity TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
