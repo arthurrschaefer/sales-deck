@@ -16,15 +16,16 @@ A lightweight, self-hosted, **vibe-coded**, system for sales teams to share reso
 ## 📦 Installation
 
 1. **Clone the repository**
-   ```bash
+```bash
    git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
    cd sales-deck
 
 ```
 
+
 2. **Install dependencies**
-```bash
-npm install
+   ```bash
+   npm install
 
 ```
 
@@ -35,12 +36,12 @@ Create a `.env` file in the root directory:
 ADMIN_PASSWORD=your_secure_password
 SESSION_SECRET=your_random_secret_string
 PORT=3000
-
 ```
 
 
 4. **Initialize Database**
 The system automatically builds the database from `schema.sql` the first time you run it.
+
 5. **Start the server**
 ```bash
 node server.js
