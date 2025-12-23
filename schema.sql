@@ -12,5 +12,6 @@ CREATE TABLE IF NOT EXISTS feedback (
     status TEXT,
     comment TEXT,
     user_identity TEXT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (resource_id) REFERENCES resources(id)
 );
