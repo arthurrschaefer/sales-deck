@@ -24,7 +24,7 @@ A lightweight, self-hosted, **vibe-coded**, system for sales teams to share reso
 
 
 2. **Install dependencies**
-   ```bash
+```bash
    npm install
 
 ```
@@ -32,6 +32,7 @@ A lightweight, self-hosted, **vibe-coded**, system for sales teams to share reso
 
 3. **Configure Environment Variables**
 Create a `.env` file in the root directory:
+
 ```text
 ADMIN_PASSWORD=your_secure_password
 SESSION_SECRET=your_random_secret_string
@@ -40,9 +41,10 @@ PORT=3000
 
 
 4. **Initialize Database**
+
 The system automatically builds the database from `schema.sql` the first time you run it.
 
-5. **Start the server**
+7. **Start the server**
 ```bash
 node server.js
 
@@ -60,35 +62,12 @@ node server.js
 * `server.js`: The core logic and API.
 * `schema.sql`: Database table definitions.
 * `/public`: Frontend interface.
-* `login.html`: Entry point for admins.
-* `dashboard.html`: Analytics and link management.
-* `feedback.html`: The page where sales reps leave reviews.
+   * `login.html`: Entry point for admins.
+   * `dashboard.html`: Analytics and link management.
+   * `feedback.html`: The page where sales reps leave reviews.
 
 
 
 ## 📝 License
-
-MIT License - Feel free to use and modify for your team!
-
-```
-
----
-
-### Final Implementation Steps:
-
-1.  **Save the file:** Save the code above as `README.md`.
-2.  **Add to Git:**
-    ```bash
-    git add README.md
-    git commit -m "Add documentation"
-    git push origin main
-    ```
-
-
-
-### What happens now?
-When you go to your GitHub repository URL, this file will be rendered as a beautiful front page. It makes your project look professional and helps you remember how to set it up if you move it to a different server.
-
-**Is there any other feature you'd like to add to the dashboard, or are you ready to start tracking those links?**
-
-```
+Licensed under the GNU General Public License v3.0 (GPL-3). 
+See the [LICENSE](LICENSE) file for details.
